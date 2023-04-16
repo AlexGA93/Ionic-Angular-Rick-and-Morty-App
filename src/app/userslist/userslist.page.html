@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Users</ion-title>
+    <ion-back-button slot="start" defaultHref="home">
+      <ion-icon name="home-outline"></ion-icon>
+    </ion-back-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="background"  [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col sizeMd="4" offsetMd="4">
+        <ion-list>
+          <ion-list-header>
+            <ion-label>Rick & Morty Characters</ion-label>
+          </ion-list-header>
+      
+          <ng-container
+            *ngIf="usersList.length !== 0; then thereIsUsers; else thereIsNotUsers"
+          ></ng-container>
+      
+          <ng-template #thereIsUsers>
+            <ion-item *ngFor="let user of usersList" href="/profile/{{ user.id }}" >
+              <ion-chip>
+                <ion-avatar>
+                  <img alt="{{ user.id }}" src="{{ user.image }}" />
+                </ion-avatar>
+                <ion-label>{{ user.name }}</ion-label>
+              </ion-chip>
+            </ion-item>
+          </ng-template>
+      
+          <ng-template #thereIsNotUsers>
+            <ion-card>
+              <ion-card-content>
+                Loading Characters
+                <ion-spinner></ion-spinner>
+              </ion-card-content>
+            </ion-card>
+          </ng-template>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+  
+  
+  
+  
+  
+</ion-content>
